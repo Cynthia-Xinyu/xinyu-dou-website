@@ -1,6 +1,6 @@
 # Xinyu Dou — academic website
 
-Source for [Xinyu Dou's personal website](https://xinyu-dou-research.taoliult312.chatgpt.site), covering research interests and publications.
+Source for [Xinyu Dou's personal website](https://cynthia-xinyu.github.io/xinyu-dou-website/), covering research interests and publications.
 
 ## Run locally
 

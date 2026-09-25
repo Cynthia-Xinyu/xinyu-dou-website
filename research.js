@@ -58,7 +58,7 @@ stage.addEventListener('wheel', event => {
 }, { passive: false });
 
 stage.addEventListener('keydown', event => {
-  const direction = ['ArrowRight', 'PageDown'].includes(event.key) ? 1 : ['ArrowLeft', 'PageUp'].includes(event.key) ? -1 : 0;
+  const direction = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
   if (!direction) return;
   event.preventDefault();
   move(direction);

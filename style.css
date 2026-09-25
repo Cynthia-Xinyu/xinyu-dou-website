@@ -405,6 +405,46 @@ main>section{scroll-snap-align:start}
 @media(max-width:760px){.research-stage .research-art{opacity:.35}}
 @media(prefers-reduced-motion:reduce){.research-art .art-scene.is-active .art-person{animation:none}}
 
+/* Three independent viewport chapters. The publication list scrolls within its chapter. */
+body.chapters-ready{height:100svh;overflow:hidden}
+.chapters-ready .site-header{position:fixed;inset:0 0 auto;z-index:100;height:78px}
+.chapters-ready main{position:fixed;inset:78px 0 0;overflow:hidden;isolation:isolate}
+.chapters-ready main>section{position:absolute;inset:0;width:100%;height:100%;min-height:0;margin:0;overflow:hidden;scroll-margin:0;scroll-snap-align:none;will-change:transform,opacity;transition:transform .82s cubic-bezier(.22,.75,.2,1),opacity .68s ease,visibility 0s .82s}
+.chapters-ready main>section.is-current{z-index:3;visibility:visible;opacity:1;transform:translate3d(0,0,0);transition:transform .82s cubic-bezier(.22,.75,.2,1),opacity .68s ease,visibility 0s}
+.chapters-ready main>section.is-before{z-index:2;visibility:hidden;opacity:.38;transform:translate3d(0,-22%,0)}
+.chapters-ready main>section.is-after{z-index:2;visibility:hidden;opacity:.38;transform:translate3d(0,100%,0)}
+.chapters-ready .hero{display:flex;align-items:center}
+.chapters-ready .hero-inner{min-height:0;height:100%;padding-block:28px 55px}
+.chapters-ready .hero-composition{min-height:0}
+.chapters-ready .hero-portrait{height:min(70svh,690px)}
+.chapters-ready .hero-next{bottom:18px}
+.chapters-ready .research{border:0;border-radius:0;box-shadow:none}
+.chapters-ready .publication{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding-top:65px;padding-bottom:0}
+.chapters-ready .publication>footer{margin-top:65px}
+.chapters-ready .publication .section-top{margin-bottom:38px}
+.chapters-ready .publication .pub-item{padding-block:21px}
+.chapters-ready .publication .pub-item h3{font-size:clamp(24px,2.2vw,34px)}
+.chapters-ready .publication .pub-item:hover{padding-left:7px}
+.chapters-ready main>section.is-current .hero-content,.chapters-ready main>section.is-current .hero-art,.chapters-ready main>section.is-current .research-stage-top,.chapters-ready main>section.is-current .research-stage-bottom,.chapters-ready main>section.is-current .section-top{animation:chapter-arrive .85s both}
+.chapters-ready main>section.is-current .hero-art,.chapters-ready main>section.is-current .research-stage-bottom{animation-delay:.12s}
+@keyframes chapter-arrive{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}
+@media(max-width:760px){
+  .chapters-ready .site-header{height:69px}
+  .chapters-ready main{inset:69px 0 0}
+  .chapters-ready .hero-inner{padding:26px 0 24px;overflow-y:auto}
+  .chapters-ready .hero-composition{margin:auto 0;gap:10px}
+  .chapters-ready .hero-portrait{height:min(37svh,350px);margin-top:10px;width:min(78%,350px)}
+  .chapters-ready .hero h1{font-size:clamp(60px,12vw,88px)}
+  .chapters-ready .hero .hero-lead{margin-top:12px}
+  .chapters-ready .hero-links{margin-top:12px}
+  .chapters-ready .hero-next{position:static;margin-top:12px}
+  .chapters-ready .research{touch-action:pan-y pinch-zoom}
+  .chapters-ready .publication{padding-top:34px}
+  .chapters-ready .publication .pub-item{padding-block:18px}
+}
+@media(max-height:640px){.chapters-ready .hero-inner{overflow-y:auto}.chapters-ready .research .panel-inner{padding-top:58px;padding-bottom:65px}.chapters-ready .research .panel-copy h3{font-size:clamp(42px,5vw,70px);margin-bottom:14px}.chapters-ready .research .panel-copy p{font-size:15px;line-height:1.4}}
+@media(prefers-reduced-motion:reduce){.chapters-ready main>section,.chapters-ready main>section.is-current,.chapters-ready main>section.is-before,.chapters-ready main>section.is-after{transition:none!important}.chapters-ready main>section.is-current .hero-content,.chapters-ready main>section.is-current .hero-art,.chapters-ready main>section.is-current .research-stage-top,.chapters-ready main>section.is-current .research-stage-bottom,.chapters-ready main>section.is-current .section-top{animation:none!important}}
+
 /* The research gallery now shows only the dancers, on the white page. */
 .research-stage .research-art{top:14%;right:1%;width:min(43vw,650px);height:72%;pointer-events:none}
 .research-art .art-scene .art-person{object-fit:contain;filter:drop-shadow(0 16px 20px rgba(82,64,48,.15))}
